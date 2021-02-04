@@ -11,7 +11,7 @@
     </head>
 
     <body id="body"
-        class="flex flex-col items-center justify-center w-screen h-full h-screen p-40 overflow-hidden transition-all duration-500 ease-in-out mobile">
+        class="flex flex-col items-center justify-center w-screen h-full h-screen p-40 transition-all duration-500 ease-in-out mobile">
         <div id="wrapper"
             class="flex flex-row items-center justify-between w-full h-full p-4 transition-all duration-500 ease-in-out bg-gray-200 rounded-lg shadow-xl overflow-hidden">
             <div id="sidebar"
@@ -37,20 +37,20 @@
                     <div id="toggleTimer" class="button initial" onclick="toggleTimer()">Start Timer</div>
                     <div id="clearTimer" class="button initial" onclick="clearIntervals()">Clear Timer</div>
                 </div>
-                <div class="grid flex-1 w-full grid-cols-3 grid-rows-3 gap-2 text-center transition-all duration-500" id="addGrid">
-                    <div class="flex flex-row items-center justify-center transform btn-click" onclick="addInterval(5)">
+                <div class="grid flex-1 w-full overflow-y-auto grid-cols-3 gap-2 text-center transition-all duration-500" id="addGrid">
+                    <div class="flex flex-row items-center justify-center transform btn-click h-32" onclick="addInterval(5)">
                         Add 5 Seconds</div>
-                    <div class="flex flex-row items-center justify-center transform btn-click"
+                    <div class="flex flex-row items-center justify-center transform btn-click h-32"
                         onclick="addInterval(30)">Add 30 Seconds</div>
-                    <div class="flex flex-row items-center justify-center transform btn-click"
+                    <div class="flex flex-row items-center justify-center transform btn-click h-32"
                         onclick="addInterval(60)">Add 1 Minute</div>
-                    <div class="flex flex-row items-center justify-center transform btn-click"
+                    <div class="flex flex-row items-center justify-center transform btn-click h-32"
                         onclick="addInterval(90)">Add 1 ½ Minutes</div>
-                    <div class="flex flex-row items-center justify-center transform btn-click"
+                    <div class="flex flex-row items-center justify-center transform btn-click h-32"
                         onclick="addInterval(120)">Add 2 Minutes</div>
-                    <div class="flex flex-col items-center justify-center transform fbtn">
+                    <div class="flex flex-col items-center justify-center transform fbtn h-32">
                         <div class="flex flex-col w-full justify-center items-center">
-                            <p>Add Custom Duration</p>
+                            <p class="text-sm">Add Custom Duration</p>
                             <input data-duration="00:00:00" id="interInt"
                                 class="html-duration-picker mx-2 mb-3 border-b border-black overflow-hidden">
                         </div>

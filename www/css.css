@@ -86,6 +86,10 @@ input {
     overflow: hidden;
 }
 
+#addGrid {
+	grid-auto-rows: 1fr;
+}
+
 .fbtn {
     background: #f7f7f7;
     padding: 0.5rem;
