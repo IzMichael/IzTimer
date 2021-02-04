@@ -104,10 +104,6 @@ input {
     --tw-translate-y: 5px;
 }
 
-.btn-push:active {
-    --tw-translate-y: 7px;
-}
-
 .btn-pushed {
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;

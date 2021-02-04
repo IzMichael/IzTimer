@@ -1,6 +1,6 @@
 function fullscreen() {
-    if (document.getElementById('body').classList.contains('fullscreen')) {
-        document.getElementById('body').classList.remove('fullscreen');
+    if (!document.getElementById('body').classList.contains('fullscreen')) {
+        document.getElementById('body').classList.add('fullscreen');
         document.getElementById('wrapper').classList.remove('rounded-lg');
         document.getElementById('sidebar').classList.add('dissappear');
         document.getElementById('timeControl').classList.remove('flex-1');
@@ -9,7 +9,7 @@ function fullscreen() {
         document.getElementById('addGrid').classList.remove('grid-cols-3');
         document.getElementById('addGrid').classList.add('grid-cols-2');
     } else {
-        document.getElementById('body').classList.add('fullscreen');
+        document.getElementById('body').classList.remove('fullscreen');
         document.getElementById('wrapper').classList.add('rounded-lg');
         document.getElementById('sidebar').classList.remove('dissappear');
         document.getElementById('timeControl').classList.add('flex-1');
