@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>IzTimer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="./main.js"></script>
+        <link rel="stylesheet" href="https://resources.izmichael.xyz/assets/tailwind2.css">
+        <link rel="stylesheet" href="./css.css">
+    </head>
+
+    <body id="body"
+        class="flex flex-col items-center justify-center w-screen h-full h-screen p-40 overflow-hidden transition-all duration-500 ease-in-out mobile">
+        <div id="wrapper"
+            class="flex flex-row items-center justify-between w-full h-full p-4 transition-all duration-500 ease-in-out bg-gray-200 rounded-lg shadow-xl overflow-hidden">
+            <div id="sidebar"
+                class="flex flex-col items-center justify-around w-1/4 h-full p-8 mr-2 text-center transition-all duration-1000 ease-in-out transform border-r border-black">
+                <div class="flex flex-col select-none">
+                    <h1 class="mb-2 text-6xl font-stnd">IzTimer</h1>
+                    <h2 class="text-3xl font-stnd">By IzMichael</h1>
+                </div>
+            </div>
+            <div class="flex flex-col flex-1 w-1/4 h-full transition-all duration-1000 ease-in-out" id="timeControl">
+                <div class="flex flex-col mb-4 text-md">
+                    <div class="flex flex-row items-center justify-between w-full gap-2 mb-2" id="configGroup">
+                        <div class="flex flex-col items-center justify-center flex-1 h-full transform btn-push btn-pushed"
+                            onclick="toggleFlash()" id="alertFlash">Flash when the timer is complete</div>
+                        <div class="flex flex-col items-center justify-center flex-1 h-full transform btn-push btn-pushed"
+                            onclick="toggleSound()" id="alertSound">Play a sound when the timer is complete</div>
+                        <div class="flex flex-row items-center justify-center flex-1 h-full transform btn-push"
+                            onclick="toggleLoop()" id="loop">Loop through the queue</div>
+                    </div>
+                </div>
+                <div class="flex flex-row items-center justify-around w-full mb-4" id="controlsGroup">
+                    <div id="toggleFullscreen" class="button" onclick="fullscreen()">Fullscreen</div>
+                    <div id="toggleTimer" class="button initial" onclick="toggleTimer()">Start Timer</div>
+                    <div id="clearTimer" class="button initial" onclick="clearIntervals()">Clear Timer</div>
+                </div>
+                <div class="grid flex-1 w-full grid-cols-3 grid-rows-3 gap-2 text-center transition-all duration-500" id="addGrid">
+                    <div class="flex flex-row items-center justify-center transform btn-click" onclick="addInterval(5)">
+                        Add 5 Seconds</div>
+                    <div class="flex flex-row items-center justify-center transform btn-click"
+                        onclick="addInterval(30)">Add 30 Seconds</div>
+                    <div class="flex flex-row items-center justify-center transform btn-click"
+                        onclick="addInterval(60)">Add 1 Minute</div>
+                    <div class="flex flex-row items-center justify-center transform btn-click"
+                        onclick="addInterval(90)">Add 1 ½ Minutes</div>
+                    <div class="flex flex-row items-center justify-center transform btn-click"
+                        onclick="addInterval(120)">Add 2 Minutes</div>
+                    <div class="flex flex-col items-center justify-center transform fbtn">
+                        <div class="flex flex-col w-full justify-center items-center">
+                            <p>Add Custom Duration</p>
+                            <input data-duration="00:00:00" id="interInt"
+                                class="html-duration-picker mx-2 mb-3 border-b border-black overflow-hidden">
+                        </div>
+                        <div class="px-8 btn-click transform w-full" onclick="addCustomInterval('interInt')">Add Seconds</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col items-center justify-start w-1/4 h-full p-8 ml-2 text-center transition-all duration-1000 ease-in-out transform border-l border-black"
+                id="totalAndQueue">
+                <p id="output" class="w-full text-3xl text-center border-b border-black select-none">00:00:00</p>
+                <div id="intervalList" class="flex flex-col"></div>
+            </div>
+        </div>
+        <audio src="./alertChime.mp3" class="hidden" id="alertSoundPlayer"></audio>
+        <script src="./durationPicker.js"></script>
+    </body>
+
+</html>
