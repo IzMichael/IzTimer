@@ -142,8 +142,7 @@ const config = {
     "alertFlash": true,
     "alertSound": true,
     "soundPath": "./alertChime.mp3",
-    "loop": false,
-    "loopInt": 3,
+    "loop": false
 };
 
 function toggleFlash() {
@@ -205,7 +204,7 @@ function addCustomInterval(el) {
 async function step() {
     document.getElementById('output').innerHTML = '00:00:00';
     clearInterval(clock);
-    if (config.loop == true && loopStep <= config.loopInt) {
+    if (config.loop == true) {
         intervals.push(intervals[0])
         loopStep = loopStep + 1;
     }
