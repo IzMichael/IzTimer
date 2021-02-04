@@ -26,10 +26,12 @@ function toggleTimer() {
         btn.innerHTML = 'Stop Timer';
         btn.classList.remove('initial');
         timer(intervals[0])
+        fullTimer()
     } else {
         btn.innerHTML = 'Start Timer';
         btn.classList.add('initial');
         clearInterval(clock);
+        clearInterval(fullClock);
         document.getElementById('output').innerHTML = parseSecs(0);
     }
 }
@@ -63,6 +65,7 @@ var loopStep = 0;
 
 var time = 0;
 var clock;
+var fullClock;
 
 function printIntervals() {
     document.getElementById('intervalList').innerHTML = '';
@@ -109,6 +112,14 @@ function timer(interval) {
     }, 500);
 }
 
+function fullTimer() {
+    var start = Date.now();
+    fullClock = setInterval(function () {
+        var delta = Date.now() - start;
+        fullOutput(Math.floor(delta / 1000));
+    }, 500);
+}
+
 function output(t) {
     if (t < 10) {
         time = '0' + t;
@@ -116,6 +127,15 @@ function output(t) {
         time = t;
     }
     document.getElementById('output').innerHTML = parseSecs(time);
+}
+
+function fullOutput(t) {
+    if (t < 10) {
+        time = '0' + t;
+    } else {
+        time = t;
+    }
+    document.getElementById('totaloutput').innerHTML = parseSecs(time);
 }
 
 const config = {
@@ -161,6 +181,11 @@ function toggleLoop() {
 function clearIntervals() {
     intervals = [];
     printIntervals();
+    btn.innerHTML = 'Start Timer';
+    btn.classList.add('initial');
+    clearInterval(clock);
+    clearInterval(fullClock);
+    document.getElementById('output').innerHTML = parseSecs(0);
 }
 
 function addCustomInterval(el) {
@@ -178,7 +203,6 @@ function addCustomInterval(el) {
 }
 
 async function step() {
-    await sleep(0.25)
     document.getElementById('output').innerHTML = '00:00:00';
     clearInterval(clock);
     if (config.loop == true && loopStep <= config.loopInt) {
@@ -187,8 +211,6 @@ async function step() {
     }
     intervals.shift();
     document.getElementById('queue-0').classList.add('slideOut')
-    await sleep(2)
-    printIntervals();
     if (intervals === undefined || intervals.length == 0) {
         const btn = document.getElementById('toggleTimer')
         btn.innerHTML = 'Start Timer';
@@ -198,6 +220,8 @@ async function step() {
     } else {
         timer(intervals[0])
     }
+    await sleep(2)
+    printIntervals();
 }
 
 function sleep(s) {
